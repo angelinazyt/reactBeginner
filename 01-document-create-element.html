@@ -1,10 +1,15 @@
 <body>
+  <!-- 1.	A place where to append JavaScript生产的DOM elements-->
   <div id="root"></div>
   <script type="text/javascript">
-    const rootElement = document.getElementById('root')
+    //2.	Get access to that element from the document APIs
+    const rootElement = document.getElementById("root")
+    //3.	Create our own elemtent
     const element = document.createElement('div')
+    //4.	Add some properties onto that element
     element.textContent = 'Hello World'
-    element.className = 'container'
+    element.className = 'Container'
+    //5.	Append the element to the root element
     rootElement.appendChild(element)
   </script>
 </body>
