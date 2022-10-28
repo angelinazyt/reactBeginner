@@ -1,25 +1,34 @@
 <body>
   <div id="root"></div>
-  <script src="https://unpkg.com/react@16.12.0/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script src="https://unpkg.com/prop-types@15.6.1/prop-types.js"></script>
   <script type="text/babel">
-    const rootElement = document.getElementById('root')
+    const rootElement = document.getElementById("root")
 
-    function SayHello({firstName, lastName}) {
+    function SayHello({firstname, lastname}) {
       return (
         <div>
-          Hello {firstName} {lastName}!
+          Hello {firstname} {lastname}!
         </div>
       )
     }
-    SayHello.propTypes = {
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
+    const PropTypes ={
+      string(props, propName, componentName){
+        if(typeof props[propName] !=="string"){
+          return new Error(`Hey, the component ${componentName} needs the prop ${props} to be a String, but you passed a ${typeof props[propName]}`)
+        }
+      }
     }
 
-    const element = <SayHello firstName={false} />
+    SayHello.propTypes ={
+      firstname:PropTypes.string.isRequired,
+      lastname:PropTypes.string.isRequiredS
+
+    }
+    const element = <SayHello firstname={false} />
+
 
     ReactDOM.render(element, rootElement)
   </script>
