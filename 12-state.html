@@ -4,17 +4,32 @@
   <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
   <script type="text/babel">
+
     function Greeting() {
-      const [name, setName] = React.useState('')
-      const handleChange = event => setName(event.target.value)
+      const [name, setName] = React.useState('') //useState hook return an array, name= initial value '', give current value to setName 
+      const [name2, setName2] = React.useState('') //2 States handled indepentdent, react tracking their order
+      const handleChange = (event) => setName(event.target.value)
+      const handleChange2 = (event) => setName2(event.target.value)
+
+
       return (
         <div>
           <form>
-            <label htmlFor="name">Name: </label>
-            <input onChange={handleChange} id="name" />
+            <label htmlFor='name'>Name: </label>
+            <br />
+            <input onChange={handleChange} id='name' />
           </form>
-          {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+          {name ? <strong>{`Hello ${name}`}</strong> : 'Please type your name'}
+          <div>
+            <form>
+              <label htmlFor='name'>Name: </label>
+              <br />
+              <input onChange={handleChange2} id='name' />
+            </form>
+            {name2 ? <strong>{`Hello ${name2}`}</strong> : 'Please type your name'}
+          </div>
         </div>
+
       )
     }
 
